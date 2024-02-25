@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 // import { myfetch } from '@/utils/myFetch';
 import Head from 'next/head';
 
