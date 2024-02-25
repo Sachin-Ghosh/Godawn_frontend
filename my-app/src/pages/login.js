@@ -87,7 +87,7 @@ export default function Login() {
           <div className="text-right mb-10">
             <h1 className="text-5xl tracking-wide font-semibold mb-4">Login In</h1>
             <p className="text-sm tracking-wide">
-              Don't have an account? <a href="/signUp" className="underline">Sign Up</a>
+              Don&apos;t have an account? <Link href="/signUp/"> <a className="underline">Sign Up</a></Link>
             </p>
           </div>
           <form onSubmit={handleSubmit}>
