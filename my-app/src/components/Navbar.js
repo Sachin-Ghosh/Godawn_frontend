@@ -8,7 +8,7 @@ const Navbar = () => {
   //   const { token, logout } = useAuth();
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 z-50 fixed top-0 left-0 w-full">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">Godawn</a>
       </div>
@@ -38,10 +38,14 @@ const Navbar = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <Link href="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link href="/signUp">
+                Sign Up
+              </Link>
             </li>
             <li>
               <a>Settings</a>
