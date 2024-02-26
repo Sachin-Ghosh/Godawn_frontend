@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 z-50 fixed top-0 left-0 w-full">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Godawn</a>
+        <a href="/" className="btn btn-ghost text-xl">Godawn</a>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
@@ -48,7 +48,19 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a>Settings</a>
+            <Link href="/dashboard">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link href="/invoice">
+                Invoice
+              </Link>
+            </li>
+            <li>
+              <Link href="/inventory">
+                Inventory
+              </Link>
             </li>
             <li>
               <a>Logout</a>
