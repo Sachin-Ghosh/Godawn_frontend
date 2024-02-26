@@ -1,6 +1,8 @@
 // components/InvoicePDF.js
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { BlobProvider } from '@react-pdf/renderer';
+
 
 import { useAuth } from '@/context/AuthContext';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
@@ -82,7 +84,7 @@ export default function InvoicePDF( { invoice } ) {
 
       const downloadFile = () => {
         const blobUrl = URL.createObjectURL(
-          <BlobProvider document={<PdfGenerator />} fileName="sample.pdf">
+          <BlobProvider document={<PDF />} fileName="sample.pdf">
             {({ url }) => <a href={url} target="_blank" rel="noopener noreferrer">Click Here</a>}
           </BlobProvider>
         );
@@ -91,29 +93,28 @@ export default function InvoicePDF( { invoice } ) {
       };
 
     return (
-        <div className="grid grid-cols-2">
-            {/* <div className='py-2'>
+      <div className="grid grid-cols-2">
+        {/* <div className='py-2'>
                 
             </div> */}
 
+        <div className="py-2">
+          <PDFDownloadLink document={<PDF />} fileName="sample.pdf">
+            {({ blob, url, loading, error }) =>
+              loading ? (
+                "Loading document..."
+              ) : (
+                <button className="btn btn-sm mb-2">Download</button>
+              )
+            }
+          </PDFDownloadLink>
 
-            <div children="py-2">
-                <PDFDownloadLink document={<PDF />} fileName="sample.pdf">
-                    {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : 
-                    <button className='btn btn-sm mb-2'>Download</button>
-                    }
-                    
-                </PDFDownloadLink>
-
-                <PDFViewer width="100%" height="400">
-                    <PDF />
-                </PDFViewer>
-
-            </div>
-
+          <PDFViewer width="100%" height="400">
+            <PDF />
+          </PDFViewer>
         </div>
-);
+      </div>
+    );
 }
 
 // export default InvoicePDF;

@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 z-50 fixed top-0 left-0 w-full">
       <div className="flex-1">
-        <a href="/" className="btn btn-ghost text-xl">Godawn</a>
+        <Link href="/" className="btn btn-ghost text-xl">Godawn</Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
