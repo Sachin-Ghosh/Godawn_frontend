@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { showAlert } from '@/utils/showAlert';
+import { IoMdCloseCircle } from "react-icons/io";
+import { IoIosAddCircle } from "react-icons/io";
 
 const ProductModal = ({ isOpen, onClose, updateProducts, product, onUpdate }) => {
   const [formData, setFormData] = useState({
@@ -107,30 +109,32 @@ const handleSubmit = async (e) => {
   return (
     <div className={`fixed inset-0 overflow-y-auto ${isOpen ? 'block' : 'hidden'}`}>
       <div className="flex items-center justify-center min-h-screen">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div className="  bg-slate-400 p-8 rounded-lg shadow-lg relative">
+        <button type="button" className=" bg-black rounded-full absolute top-0 right-3 mt-4 mr-4s  " onClick={onClose}>
+          <IoMdCloseCircle size={24} />
+              </button>
           <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block text-gray-700">Product Name:</label>
+                    <div className="mb-4 ">
+              <label className=" block text-white-700 ">Product Name:</label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="form-input w-full text-gray-900"
-              />
+                className="form-input w-full text-gray-900"/>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Product Description:</label>
+            
+            <div className="mb-4 ">
+              <label className="blocktext-white">Product Description:</label>
               <textarea
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="form-textarea w-full text-gray-900"
-              ></textarea>
+                className="form-textarea w-full text-gray-900"></textarea>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700">Unit Price:</label>
+              <label className="block text-white">Unit Price:</label>
               <input
                 type="number"
                 name="unitPrice"
@@ -140,7 +144,7 @@ const handleSubmit = async (e) => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700">Quantity:</label>
+              <label className="block text-white">Quantity:</label>
               <input
                 type="number"
                 name="quantity"
@@ -149,11 +153,9 @@ const handleSubmit = async (e) => {
                 className="form-input w-full text-gray-900"
               />
             </div>
-            <div className="flex justify-end">
-              <button type="button" className="btn btn-secondary mr-2" onClick={onClose}>
-                Cancel
-              </button>
+            <div >
               <button type="submit" className="btn btn-primary">
+              <IoIosAddCircle  size={24}/>
               {product ? 'Update Product' : 'Add Product'}
               </button>
             </div>
