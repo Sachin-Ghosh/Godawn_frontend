@@ -6,11 +6,11 @@ const Footer = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <footer className="bg-base-200 w-full p-8 mx-auto">
+    <footer className="bg-base-200 w-full p-8 mx-auto text-gray-500">
       {/* Grid */}
       <div className="text-center">
 
-      <div className='py-4'>
+      <div className='py-4 '>
       <span>Select Theme: </span>
       <select className="select select-sm" value={theme} onChange={e => setTheme(e.target.value)}>
         <option value="light">light</option>

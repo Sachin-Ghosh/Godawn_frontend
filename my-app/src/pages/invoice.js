@@ -7,8 +7,8 @@ export default function Invoice() {
 
   const [customerName, setCustomerName] = useState('');
   const [productName, setProductName] = useState('');
-  const [quantity, setQuantity] = useState(0);
-  const [unitPrice, setUnitPrice] = useState(0);
+  const [quantity, setQuantity] = useState();
+  const [unitPrice, setUnitPrice] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const [paymentStatus, setPaymentStatus] = useState('Pending');
 

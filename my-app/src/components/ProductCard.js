@@ -19,9 +19,11 @@ const ProductCard = ({ product,onUpdate }) => {
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 m-4">
-      <h2 className="text-xl text-gray-500 font-semibold">{product.name}</h2>
-      <p className="text-gray-500">{product.description}</p>
-      <p className="text-gray-700">Unit Price: ${product.unitPrice}</p>
+      <h2 className="text-xl text-gray-500 font-bold">Product Type: {product.type}</h2>
+      {/* <h2 className="text-xl text-gray-500 font-semibold">{product.name}</h2> */}
+      <p className="text-gray-500">Product Name: {product.name}</p>
+      <p className="text-gray-500">Product Description: {product.description}</p>
+      <p className="text-gray-700">Unit Price: ₹{product.unitPrice}</p>
       <p className="text-gray-700">Quantity: {product.quantity}</p>
       <button className="btn btn-secondary" onClick={handleEdit}>
         Edit

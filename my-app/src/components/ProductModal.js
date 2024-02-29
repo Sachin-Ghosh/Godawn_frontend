@@ -7,6 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 
 const ProductModal = ({ isOpen, onClose, updateProducts, product, onUpdate }) => {
   const [formData, setFormData] = useState({
+    type: '',
     name: '',
     description: '',
     unitPrice: '',
@@ -17,6 +18,7 @@ const ProductModal = ({ isOpen, onClose, updateProducts, product, onUpdate }) =>
   useEffect(() => {
     if (product) {
       setFormData({
+        type: product.type,
         name: product.name,
         description: product.description,
         unitPrice: product.unitPrice,
@@ -115,8 +117,19 @@ const handleSubmit = async (e) => {
               </button>
           <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
           <form onSubmit={handleSubmit}>
-                    <div className="mb-4 ">
-              <label className=" block text-white-700 ">Product Name:</label>
+
+            <div className="mb-4">
+              <label className="block text-white">Product Type:</label>
+              <input
+                type="text"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                className="form-input w-full text-gray-900"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-white">Product Name:</label>
               <input
                 type="text"
                 name="name"

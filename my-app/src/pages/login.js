@@ -41,8 +41,10 @@ export default function Login() {
       if (!response.ok) {
         throw new Error('Login failed');
       }
-      // console.log('Login successful:', data);
-      // login(data);
+
+      const data = await response.json();
+      console.log('Login successful:', data);
+      login(data);
 
       router.push('/'); // Redirect to dashboard on successful login
     } catch (error) {
@@ -86,7 +88,7 @@ export default function Login() {
         {/* Your right section code */}
         <div className="w-full px-24 z-10">
           <div className="text-right mb-10">
-            <h1 className="text-5xl tracking-wide font-semibold mb-4">Login In</h1>
+            <h1 className="text-5xl tracking-wide font-semibold mb-4">Log In</h1>
             <p className="text-sm tracking-wide">
               Don&apos;t have an account? <Link href="/signUp/"> <a className="underline">Sign Up</a></Link>
             </p>
@@ -119,7 +121,7 @@ export default function Login() {
             </div>
             <div className="mb-4">
               <button type="submit" className="w-full px-4 py-3 rounded-lg bg-blue-600 text-gray-200 font-semibold hover:bg-blue-500 transition-colors">
-                Login In
+                Log In
               </button>
             </div>
           </form>

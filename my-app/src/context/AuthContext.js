@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     // Check if the authentication token exists in the cookie
     const storedToken = getCookie("token");
     const storedAuthUser = getCookie("authUser");
-
+    console.log(storedToken);
 
     if (storedToken &&  storedAuthUser) {
       setToken(storedToken);
@@ -22,12 +22,12 @@ export const AuthProvider = ({ children }) => {
     }
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
-  const login = (token) => {
-    setToken(token);
+  const login = (value) => {
+    setToken(value.token);
     setAuthUser(value.user);
 
     setCookie("authUser",JSON.stringify(value.user));
-    setCookie("token", token);
+    setCookie("token", value.token);
   };
 
   const logout = () => {

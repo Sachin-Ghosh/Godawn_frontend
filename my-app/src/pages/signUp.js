@@ -68,7 +68,7 @@ const handleChange = (e) => {
 
       if (response.ok) {
         const data = await response.json();
-        router.push('/');
+        router.push('/login');
         console.log(data.message); // Do something after successful signup
       } else {
         const errorMessage = await response.text();

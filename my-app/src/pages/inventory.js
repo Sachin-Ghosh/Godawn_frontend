@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '@/components/ProductCard';
 import ProductModal from '@/components/ProductModal';
+
 import { IoIosAddCircle } from "react-icons/io";
+
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +17,7 @@ const InventoryPage = () => {
         throw new Error('Error fetching products');
       }
       const data = await response.json();
+      console.log(data);
       setProducts(data);
     } catch (error) {
       console.error(error.message);
@@ -60,7 +63,9 @@ const InventoryPage = () => {
      
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {products.map((product) => (
+        
+        {
+        products.map((product) => (
           <ProductCard key={product.id} product={product} onUpdate={updateProducts} />
         ))}
       </div>
