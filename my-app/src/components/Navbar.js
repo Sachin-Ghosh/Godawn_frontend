@@ -132,31 +132,31 @@ const Navbar = () => {
         >
           <ul className="space-y-4 mt-4">
             <li>
-              <Link href="/dashboard" className="text-white" onClick={closeSidebar}>
+              <Link href="/dashboard" className="text-primary" onClick={closeSidebar}>
                 
                   Dashboard
                
               </Link>
             </li>
             <li>
-              <Link href="/invoice" className="text-white" onClick={closeSidebar}>
-               
-                  Invoice
-               
-              </Link>
-            </li>
-            <li>
-              <Link href="/inventory" className="text-white" onClick={closeSidebar}>
+              <Link href="/inventory" className="text-primary" onClick={closeSidebar}>
                
                   Inventory
               
               </Link>
             </li>
             <li>
-              <Link href="/sales" className="text-white" onClick={closeSidebar}>
+              <Link href="/sales" className="text-primary" onClick={closeSidebar}>
                
                   Sales
               
+              </Link>
+            </li>
+            <li>
+              <Link href="/invoice" className="text-primary" onClick={closeSidebar}>
+               
+                  Invoice
+               
               </Link>
             </li>
           </ul>

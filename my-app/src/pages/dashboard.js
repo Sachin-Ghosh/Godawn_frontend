@@ -194,9 +194,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="container min-h-screen mx-auto px-8 py-16">
+    <div className="container min-h-screen mx-auto px-8 py-16 ">
       <header className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold ">Warehouse Dashboard</h1>
+        <h1 className="text-3xl font-bold  ">Warehouse Dashboard</h1>
         {/* {isLoggedIn && (
           <button onClick={handleLogout} className="text-gray-600 hover:text-red-500">
             Logout
