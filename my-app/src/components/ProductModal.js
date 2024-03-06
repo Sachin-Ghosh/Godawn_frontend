@@ -593,6 +593,7 @@ const ProductModal = ({
   onUpdate,
 }) => {
   const [scannedData, setScannedData] = useState("");
+  const [cameraFacingMode, setCameraFacingMode] = useState('environment');
 
   const handleScan = (data) => {
     if (data) {
@@ -669,6 +670,9 @@ console.log(productData);
     }
   };
   
+  const toggleCamera = () => {
+    setCameraFacingMode(prevMode => prevMode === 'user' ? 'environment' : 'user');
+  };
 
   return (
     <div
@@ -691,12 +695,16 @@ console.log(productData);
             >
               <label className="block text-white">Scan QR Code:</label>
               {isOpen && (
-                <QrReader
-                  delay={300}
-                  onError={handleError}
-                  onScan={handleScan}
-                  style={{ width: "100%" }}
-                />
+                 <div>
+                 <QrReader
+                   delay={300}
+                   onError={handleError}
+                   onScan={handleScan}
+                   style={{ width: '100%' }}
+                   facingMode={cameraFacingMode}
+                 />
+                 <button type="button" onClick={toggleCamera}>Switch Camera</button>
+               </div>
               )}
             </div>
 
