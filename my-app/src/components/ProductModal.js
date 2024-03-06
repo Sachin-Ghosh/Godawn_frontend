@@ -696,13 +696,24 @@ console.log(productData);
               <label className="block text-white">Scan QR Code:</label>
               {isOpen && (
                  <div>
-                 <QrReader
-                   delay={300}
-                   onError={handleError}
-                   onScan={handleScan}
-                   style={{ width: '100%' }}
-                   facingMode={cameraFacingMode}
-                 />
+                 {cameraFacingMode === 'environment' && (
+                   <QrReader
+                     delay={300}
+                     onError={handleError}
+                     onScan={handleScan}
+                     style={{ width: '100%' }}
+                     facingMode="environment"
+                   />
+                 )}
+                 {cameraFacingMode === 'user' && (
+                   <QrReader
+                     delay={300}
+                     onError={handleError}
+                     onScan={handleScan}
+                     style={{ width: '100%' }}
+                     facingMode="user"
+                   />
+                 )}
                  <button type="button" onClick={toggleCamera}>Switch Camera</button>
                </div>
               )}
