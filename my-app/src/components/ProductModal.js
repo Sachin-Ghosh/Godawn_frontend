@@ -574,7 +574,7 @@
 
 
 
-import React, { useState } from "react";
+import React, { useState,  useRef } from "react";
 import { IoMdCloseCircle, IoIosAddCircle } from "react-icons/io";
 // import QrReader from "react-qr-scanner";
 // import Modal from "react-modal";
@@ -593,7 +593,8 @@ const ProductModal = ({
   onUpdate,
 }) => {
   const [scannedData, setScannedData] = useState("");
-  const [cameraFacingMode, setCameraFacingMode] = useState('environment');
+  // const [cameraFacingMode, setCameraFacingMode] = useState('environment');
+  const qrRef = useRef(null);
 
   const handleScan = (data) => {
     if (data) {
@@ -670,8 +671,17 @@ console.log(productData);
     }
   };
   
-  const toggleCamera = () => {
-    setCameraFacingMode(prevMode => prevMode === 'user' ? 'environment' : 'user');
+  // const toggleCamera = () => {
+  //   setCameraFacingMode(prevMode => prevMode === 'user' ? 'environment' : 'user');
+  // };
+
+  const switchCamera = () => {
+    if (qrRef.current && qrRef.current.openImageDialog) {
+      if (qrRef.current.mediaStream) {
+        qrRef.current.mediaStream.getVideoTracks().forEach(track => track.stop()); // Stop the current camera stream
+      }
+      qrRef.current.openImageDialog(); // Open file dialog to allow the user to select another camera
+    }
   };
 
   return (
@@ -695,28 +705,20 @@ console.log(productData);
             >
               <label className="block text-white">Scan QR Code:</label>
               {isOpen && (
-                 <div>
-                 {cameraFacingMode === 'environment' && (
-                   <QrReader
-                     delay={300}
-                     onError={handleError}
-                     onScan={handleScan}
-                     style={{ width: '100%' }}
-                     facingMode="environment"
-                   />
-                 )}
-                 {cameraFacingMode === 'user' && (
-                   <QrReader
-                     delay={300}
-                     onError={handleError}
-                     onScan={handleScan}
-                     style={{ width: '100%' }}
-                     facingMode="user"
-                   />
-                 )}
-                 <button type="button" onClick={toggleCamera}>Switch Camera</button>
-               </div>
+                
+                <QrReader
+                ref={qrRef}
+                delay={300}
+                onError={handleError}
+                onScan={handleScan}
+                style={{ width: '100%' }}
+                facingMode="environment"
+              />
               )}
+            </div>
+
+            <div className="mb-4">
+              <button type="button" onClick={switchCamera}>Switch Camera</button>
             </div>
 
             <div className="mb-4">
