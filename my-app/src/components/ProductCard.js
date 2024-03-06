@@ -8,6 +8,7 @@ import ProductModal from './ProductModal';
 const ProductCard = ({ product,onUpdate }) => {
 
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [error, setError] = useState(null);
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
@@ -34,6 +35,7 @@ const ProductCard = ({ product,onUpdate }) => {
         product={product}
         onUpdate={onUpdate}
       />
+      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 };

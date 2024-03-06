@@ -166,13 +166,15 @@
 import React, { useState, useEffect } from 'react';
 import SalesCard from '../components/SalesCard';
 import SalesModal from '../components/SalesModal';
+import { showAlert } from '@/utils/showAlert';
+    
 
 const Sales = () => {
     const [sales, setSales] = useState([]); // Initialize sales as an empty array
     const [productOptions, setProductOptions] = useState([]);
     const [formData, setFormData] = useState({
         buyerName: '',
-        productId: '',
+        products: '',
         unitPrice: '',
         quantity: '',
         type: ''
@@ -225,9 +227,15 @@ const Sales = () => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch product options');
                 }
+                // const data = await response.json();
+                // console.log('Fetched product options:', data);
+                // setProductOptions(data);
                 const data = await response.json();
-                console.log('Fetched product options:', data);
-                setProductOptions(data);
+if (Array.isArray(data.products)) {
+    setProductOptions(data.products);
+} else {
+    console.error('Invalid product options data:', data);
+}
             } catch (error) {
                 console.error(error);
             }
@@ -242,7 +250,7 @@ const Sales = () => {
             ...prevState,
             [name]: value
         }));
-        if (name === 'productId') {
+        if (name === 'products') {
             const selectedProduct = productOptions.find(product => product._id === value);
             if (selectedProduct) {
                 setFormData(prevState => ({
@@ -258,11 +266,19 @@ const Sales = () => {
         try {
             const saleData = {
                 buyerName: formData.buyerName,
-                productId: formData.productId,
+                products: formData.products,
                 unitPrice: formData.unitPrice,
                 soldQuantity: parseInt(formData.quantity),
                 type: formData.type,
             };
+
+            const selectedProduct = productOptions.find(product => product._id === saleData.products);
+        if (!selectedProduct) {
+            throw new Error('Product not found');
+        }
+        if (saleData.soldQuantity > selectedProduct.quantity) {
+            throw new Error('Quantity exceeds available inventory');
+        }
 
             if (isNaN(saleData.soldQuantity) || saleData.soldQuantity <= 0) {
                 throw new Error('Invalid quantity');
@@ -280,6 +296,8 @@ const Sales = () => {
                 throw new Error('Failed to add sale');
             }
 
+            showAlert(` sold successfully`, 'success');
+
             const newSale = await saleResponse.json();
 
             console.log(newSale);
@@ -295,6 +313,7 @@ const Sales = () => {
             closeModal();
         } catch (error) {
             console.error(error);
+            showAlert('Failed to add sale: ' + error.message);
         }
     };
 

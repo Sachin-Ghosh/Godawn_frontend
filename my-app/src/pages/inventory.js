@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import ProductCard from '@/components/ProductCard';
-import ProductModal from '@/components/ProductModal';
+import ProductCard from '../components/ProductCard';
+import ProductModal from '../components/ProductModal';
 
 import { IoIosAddCircle } from "react-icons/io";
 
@@ -18,7 +18,8 @@ const InventoryPage = () => {
       }
       const data = await response.json();
       console.log(data);
-      setProducts(data);
+      // setProducts(data);
+      setProducts(data.products)
     } catch (error) {
       console.error(error.message);
     
@@ -73,6 +74,7 @@ const InventoryPage = () => {
       <ProductModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        onUpdate={updateProducts}
         updateProducts={updateProducts}
       />
     </div>

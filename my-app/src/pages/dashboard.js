@@ -223,9 +223,9 @@ const Dashboard = () => {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
              <div className="bg-gray-100 p-4 rounded-md">
                <h3 className="text-lg font-semibold text-gray-800">Total Products</h3>
-               {/* <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
-                */}
-                <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p>
+               <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
+               
+                {/* <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p> */}
              </div>
              <div className="bg-gray-100 p-4 rounded-md">
                <h3 className="text-lg font-semibold text-gray-800">Total Sales</h3>

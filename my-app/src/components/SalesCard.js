@@ -66,7 +66,7 @@
 import React, { useState, useEffect } from 'react';
 
 const SalesCard = ({ sale }) => {
-    const { buyerName, soldQuantity } = sale;
+    const { products, buyerName, soldQuantity } = sale;
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -74,10 +74,13 @@ const SalesCard = ({ sale }) => {
     useEffect(() => {
         const fetchProductData = async () => {
             try {
-                if (sale.productId) {
+                if (sale.products) {
                 // const productId = product._id;
-                const productId = sale.productId._id.toString()
-                const response = await fetch(`${process.env.API_URL}api/inventory/${productId}`);
+                // const productId = sale.productId._id.toString()
+                const products = sale.products.toString(); // Optional chaining
+                console.log("Products:", products);
+
+                const response = await fetch(`${process.env.API_URL}api/inventory/${products}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch product data');
                 }
@@ -88,13 +91,14 @@ const SalesCard = ({ sale }) => {
             }
             } catch (error) {
                 // console.error(error);
+                console.error("Fetch Product Data Error:", error);
                 setError(error.message);
                 setLoading(false);
             }
         };
 
         fetchProductData();
-    }, [sale.productId]);
+    }, [sale.products]);
 
     if (loading) {
         return <p>Loading product data...</p>;
@@ -105,10 +109,10 @@ const SalesCard = ({ sale }) => {
     }
 
     if (!product) {
-        return <p>Loading product data...</p>;
+        return <p>Product data not found...</p>;
     }
 
-    const unitPrice = parseFloat(product.productId.unitPrice);
+    const unitPrice = parseFloat(product.products.unitPrice);
 // const quantity = parseFloat(soldQuantity);
 
     // console.log('Product:', product);
@@ -127,13 +131,11 @@ const SalesCard = ({ sale }) => {
     return (
         <div className="p-4 border rounded-md shadow-md">
             <p>Buyer: {buyerName}</p>
-            {/* <p>Product ID: {product._id}</p> */}
-            <p>Name: {product.productId.name}</p>
-            <p>Type: {product.productId.type}</p>
-            <p>Unit Price: {product.productId.unitPrice}</p>
+            <p>Name: {product.products.name}</p>
+            <p>Type: {product.products.type}</p>
+            <p>Unit Price: {product.products.unitPrice}</p>
             <p>Quantity: {soldQuantity}</p>
             <p>Total Price: {totalPrice}</p>
-
             
         </div>
     );

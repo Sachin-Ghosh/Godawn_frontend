@@ -23,8 +23,8 @@ const SalesModal = ({ isOpen, closeModal, handleSubmit, handleChange, productOpt
                                                 <input type="text" name="buyerName" id="buyerName" value={formData.buyerName} onChange={handleChange} className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-gray-900" />
                                             </div>
                                             <div>
-                                                <label htmlFor="productId" className="block text-sm font-medium text-gray-700">Product</label>
-                                                <select name="productId" id="productId" value={formData.productId} onChange={handleChange} className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-gray-900">
+                                                <label htmlFor="products" className="block text-sm font-medium text-gray-700">Product</label>
+                                                <select name="products" id="products" value={formData.products} onChange={handleChange} className="mt-1 p-2 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md text-gray-900">
                                                     <option value="">Select Product</option>
                                                     {productOptions.map(product => (
                                                         <option key={product._id} value={product._id}>{product.name}</option>

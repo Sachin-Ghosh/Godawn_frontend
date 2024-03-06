@@ -128,7 +128,7 @@ const Navbar = () => {
       {sidebarOpen && (
         <div
           ref={sidebarRef}
-          className="fixed top-0 left-0 h-full w-32 bg-gray-800 backdrop-blur-sm bg-white/30 p-4 flex flex-col"
+          className="fixed top-0 left-0 h-full w-38 bg-gray-800 backdrop-blur-sm bg-blue/30 p-4 flex flex-col"
         >
           <ul className="space-y-4 mt-4">
             <li>
@@ -156,6 +156,20 @@ const Navbar = () => {
               <Link href="/invoice" className="text-primary" onClick={closeSidebar}>
                
                   Invoice
+               
+              </Link>
+            </li>
+            <li>
+              <Link href="/report" className="text-primary" onClick={closeSidebar}>
+               
+                  Report
+               
+              </Link>
+            </li>
+            <li>
+              <Link href="/QRCodeGenerator" className="text-primary" onClick={closeSidebar}>
+               
+              QRCode
                
               </Link>
             </li>
