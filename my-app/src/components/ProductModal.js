@@ -593,7 +593,7 @@ const ProductModal = ({
   onUpdate,
 }) => {
   const [scannedData, setScannedData] = useState("");
-  // const [cameraFacingMode, setCameraFacingMode] = useState('environment');
+  const [cameraFacingMode, setCameraFacingMode] = useState('environment');
   const qrRef = useRef(null);
 
   const handleScan = (data) => {
@@ -675,13 +675,22 @@ console.log(productData);
   //   setCameraFacingMode(prevMode => prevMode === 'user' ? 'environment' : 'user');
   // };
 
+  // const switchCamera = () => {
+  //   if (qrRef.current && qrRef.current.openImageDialog) {
+  //     if (qrRef.current.state.facingMode === "user") {
+  //       qrRef.current.setState({ facingMode: "environment" }); // Switch to rear camera
+  //     } else {
+  //       qrRef.current.setState({ facingMode: "user" }); // Switch to front camera
+  //     }
+  //   }
+  // };
+
+  // Function to toggle between front and rear cameras
   const switchCamera = () => {
-    if (qrRef.current && qrRef.current.openImageDialog) {
-      if (qrRef.current.mediaStream) {
-        qrRef.current.mediaStream.getVideoTracks().forEach(track => track.stop()); // Stop the current camera stream
-      }
-      qrRef.current.openImageDialog(); // Open file dialog to allow the user to select another camera
-    }
+    console.log('Before switching, cameraFacingMode:', cameraFacingMode);
+    setCameraFacingMode((prevMode) =>
+      prevMode === "user" ? "environment" : "user"
+    );
   };
 
   return (
@@ -712,14 +721,18 @@ console.log(productData);
                 onError={handleError}
                 onScan={handleScan}
                 style={{ width: '100%' }}
-                facingMode="environment"
+                facingmode={cameraFacingMode} // Use lowercase 'facingmode' here
               />
               )}
             </div>
 
             <div className="mb-4">
-              <button type="button" onClick={switchCamera}>Switch Camera</button>
+              <button type="button" className="btn btn-outline btn-accent" onClick={switchCamera}>Switch Camera</button>
             </div>
+
+            <div className="mb-4">
+  <p>Current Camera Facing Mode: {cameraFacingMode}</p>
+</div>
 
             <div className="mb-4">
               <button type="submit" className="btn btn-primary">
