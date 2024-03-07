@@ -721,7 +721,11 @@ console.log(productData);
                 onError={handleError}
                 onScan={handleScan}
                 style={{ width: '100%' }}
-                facingmode={cameraFacingMode} // Use lowercase 'facingmode' here
+                // facingmode={cameraFacingMode} // Use lowercase 'facingmode' here
+                constraints={{
+                  audio: false,
+                  video: { facingMode: "environment" }
+                }}
               />
               )}
             </div>
