@@ -35,8 +35,8 @@ Chart.register(...registerables);
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
-const PieChart = ({ data }) => {
-  if (!data || !data.totalProductsAdded || !data.totalProductsSold) {
+const PieChart = ({ pieData }) => {
+  if (!pieData || !pieData.totalProductsAdded || !pieData.totalProductsSold) {
     // Handle the case when data is undefined or missing required properties
     return <div>No data available</div>;
   }
@@ -45,7 +45,7 @@ const PieChart = ({ data }) => {
     labels: ['Products Added', 'Products Sold'],
     datasets: [
       {
-        data: [data.totalProductsAdded, data.totalProductsSold],
+        data: [pieData.totalProductsAdded, pieData.totalProductsSold],
         backgroundColor: ['#FF6384', '#36A2EB'],
         hoverBackgroundColor: ['#FF6384', '#36A2EB']
       }
