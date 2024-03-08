@@ -12,6 +12,9 @@ const Signup = () => {
     const [email, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [role, setRole] = useState('User');
   const [error, setError] = useState('');
 //   const [formData, setFormData] = useState({
 //     email: '',
@@ -39,6 +42,15 @@ const handleChange = (e) => {
       case 'confirmPassword':
         setConfirmPassword(value);
         break;
+      case 'phoneNumber':
+        setPhoneNumber(value);
+        break;
+      case 'companyName':
+        setCompanyName(value);
+        break;
+      case 'role':
+        setRole(value);
+        break;
       default:
         break;
     }
@@ -60,7 +72,9 @@ const handleChange = (e) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password,
+          phoneNumber,
+          companyName, role })
       });
     
     //   console.log('SignUp successful:', data);
@@ -146,6 +160,49 @@ const handleChange = (e) => {
                   placeholder="Email address"
                 />
               </div>
+              <div>
+          <label htmlFor="phoneNumber" className="sr-only">Phone Number</label>
+          <input
+            id="phoneNumber"
+            name="phoneNumber"
+            type="tel"
+            autoComplete="tel"
+            required
+            value={phoneNumber}
+            onChange={handleChange}
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="Phone Number"
+          />
+        </div>
+        <div>
+          <label htmlFor="companyName" className="sr-only">Company Name</label>
+          <input
+            id="companyName"
+            name="companyName"
+            type="text"
+            autoComplete="companyName"
+            required
+            value={companyName}
+            onChange={handleChange}
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="Company Name"
+          />
+        </div>
+        <div>
+          <label htmlFor="role" className="sr-only">
+            Role
+          </label>
+          <select
+            id="role"
+            name="role"
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            onChange={handleChange}
+            value={role}
+          >
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
               <div>
                 <label htmlFor="password" className="sr-only">Password</label>
                 <input
