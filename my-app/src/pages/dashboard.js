@@ -100,9 +100,7 @@ const Dashboard = () => {
   // const [recentActivities, setRecentActivities] = useState([]);
 
 
-  const inventoryOverview = {
-    totalProducts: 37,
-  };
+ 
 
     // Sample data for recent activities
     const recentActivities = [

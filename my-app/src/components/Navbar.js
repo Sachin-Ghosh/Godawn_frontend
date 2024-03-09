@@ -85,7 +85,8 @@ import { FiMenu } from "react-icons/fi";
 import { PiUser } from "react-icons/pi";
 
 const Navbar = () => {
-  const { token, logout } = useAuth();
+  const { token, logout,authUser } = useAuth();
+  // const isAdmin = user && user.role === 'Admin'; // Check if the user is an admin
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Ref to the sidebar element
@@ -159,13 +160,13 @@ const Navbar = () => {
                
               </Link>
             </li>
-            <li>
-              <Link href="/report" className="text-primary" onClick={closeSidebar}>
-               
-                  Report
-               
-              </Link>
-            </li>
+            {authUser?.role === "Admin" && ( // Render the report link only for admin users
+                  <li>
+                    <Link href="/report" className="text-primary" onClick={closeSidebar}>
+                      Report
+                    </Link>
+                  </li>
+                )}
             <li>
               <Link href="/QRCodeGenerator" className="text-primary" onClick={closeSidebar}>
                
@@ -222,6 +223,9 @@ const Navbar = () => {
             {/* <li>
               <Link href="/login">Login</Link>
             </li> */}
+            <li>
+              <Link href="/profile">Profile</Link>
+            </li>
             <li>
               <Link href="/signUp">Sign Up</Link>
             </li>

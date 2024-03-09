@@ -576,6 +576,7 @@
 
 import React, { useState,  useRef } from "react";
 import { IoMdCloseCircle, IoIosAddCircle } from "react-icons/io";
+import { showAlert } from '@/utils/showAlert';
 // import QrReader from "react-qr-scanner";
 // import Modal from "react-modal";
 // Check if window is defined to determine if it's running in a browser environment
@@ -657,6 +658,7 @@ console.log(productData);
   
       if (response.ok) {
         console.log("Product added successfully");
+        showAlert('Product added successfully!', 'success');
         onUpdate();
         onClose();
         // Optionally, update the UI or perform any other actions after successful addition
@@ -667,6 +669,7 @@ console.log(productData);
     
     } catch (error) {
       console.error("Error adding product:", error.message);
+      showAlert('Error adding product!', 'error');
       // Handle errors
     }
   };

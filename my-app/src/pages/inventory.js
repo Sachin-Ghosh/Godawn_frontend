@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 
+
 import { IoIosAddCircle } from "react-icons/io";
 
 const InventoryPage = () => {
@@ -17,7 +18,7 @@ const InventoryPage = () => {
         throw new Error('Error fetching products');
       }
       const data = await response.json();
-      console.log(data);
+      console.log(data);  
       // setProducts(data);
       setProducts(data.products)
     } catch (error) {

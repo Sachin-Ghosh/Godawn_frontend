@@ -114,8 +114,10 @@ import React, { useState, useEffect } from 'react';
 import Calendar from '../components/Calendar';
 import PieChart from '../components/PieChart';
 import LineGraph from '../components/LineGraph';
+import { useAuth } from '@/context/AuthContext';
 
 const ReportPage = () => {
+  const { authUser } = useAuth();
   const [pieChartDate, setPieChartDate] = useState(new Date());
   const [lineGraphDate, setLineGraphDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -123,9 +125,12 @@ const ReportPage = () => {
   const [selectedOptionLine, setSelectedOptionLine] = useState('year'); // Default option is 'date' for line grapE
   const [pieChartData, setPieChartData] = useState(null);
   const [lineGraphData, setLineGraphData] = useState(null);
+  const isAdmin = authUser && authUser.role === 'Admin'; 
 
   useEffect(() => {
+    if (isAdmin) {
     fetchData();
+  }
   }, [pieChartDate, lineGraphDate, selectedDate, selectedOptionPie, selectedOptionLine]);
 
   const fetchPieChartData = async () => {
@@ -265,43 +270,64 @@ const fetchData = async () => {
   };
   return (
     <div>
-    <h1>Report Page</h1>
-    <div style={{ display: 'flex' }}>
-    <div style={{ flex: 1 }}>
-      <select value={selectedOptionPie} onChange={(e) => handleOptionChangePie(e.target.value)}>
-        <option value="date">Date</option>
-        <option value="month">Month</option>
-        <option value="year">Year</option>
-      </select>
-      <Calendar selectedDate={selectedDate} handleDateChange={handleDateChange} />
-    </div>
-    {/* Similar dropdown and calendar for line graph */}
-    <div style={{ flex: 1 }}>
-      <select value={selectedOptionLine} onChange={(e) => handleOptionChangeLine(e.target.value)}>
-        <option value="date">Date</option>
-        <option value="month">Month</option>
-        <option value="year">Year</option>
-      </select>
-      <Calendar selectedDate={selectedDate} handleDateChange={handleDateChange} />
-    </div>
-    </div>
-    <div style={{ display: 'flex' }}>
-      <div style={{ flex: 1 }}>
-        {pieChartData !== null ? (
-          <PieChart pieData={pieChartData} />
-        ) : (
-          <div>No data available for pie chart</div>
-        )}
+      <h1>Report Page</h1>
+      {isAdmin ? (
+        <div>
+
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <select
+            value={selectedOptionPie}
+            onChange={(e) => handleOptionChangePie(e.target.value)}
+          >
+            <option value="date">Date</option>
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+          </select>
+          <Calendar
+            selectedDate={selectedDate}
+            handleDateChange={handleDateChange}
+          />
+        </div>
+        {/* Similar dropdown and calendar for line graph */}
+        <div style={{ flex: 1 }}>
+          <select
+            value={selectedOptionLine}
+            onChange={(e) => handleOptionChangeLine(e.target.value)}
+          >
+            <option value="date">Date</option>
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+          </select>
+          <Calendar
+            selectedDate={selectedDate}
+            handleDateChange={handleDateChange}
+          />
+        </div>
       </div>
-      <div style={{ flex: 1 }}>
-        {lineGraphData !== null ? (
-          <LineGraph lineGraphData={lineGraphData} />
-        ) : (
-          <div>No data available for line graph</div>
-        )}
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          {pieChartData !== null ? (
+            <PieChart pieData={pieChartData} />
+          ) : (
+            <div>No data available for pie chart</div>
+          )}
+        </div>
+        <div style={{ flex: 1 }}>
+          {lineGraphData !== null ? (
+            <LineGraph lineGraphData={lineGraphData} />
+          ) : (
+            <div>No data available for line graph</div>
+          )}
+        </div>
       </div>
+      </div>
+       ) : (
+        <div>
+          <p>You do not have permission to access this page.</p>
+        </div>
+      )}
     </div>
-  </div>
   );
 };
 
