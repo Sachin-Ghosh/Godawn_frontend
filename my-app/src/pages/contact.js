@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { myFetch } from "@/utils/myFetch";
 import { showAlert } from "@/utils/showAlert";
 
-const contact = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,7 +59,7 @@ const contact = () => {
             {!submitSuccess && (
               <div className="lg:w-2/3 lg:mx-10">
                 <h1 className="text-2xl font-semibold lg:text-3xl">
-                  Let's talk
+                  Let&apos;s talk
                 </h1>
 
                 <p className="mt-4 ">
@@ -286,4 +286,4 @@ const contact = () => {
     </div>
   );
 }
-export default contact;
+export default Contact;
