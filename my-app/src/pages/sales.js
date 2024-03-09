@@ -164,6 +164,7 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { FaShoppingBasket } from "react-icons/fa";
 import SalesCard from '../components/SalesCard';
 import SalesModal from '../components/SalesModal';
 import { showAlert } from '@/utils/showAlert';
@@ -322,9 +323,14 @@ if (Array.isArray(data.products)) {
     }
 
     return (
-        <div className="container mx-auto">
-            <h1 className="text-3xl font-bold my-4">Sales</h1>
-            <button onClick={openModal} className="bg-indigo-500 text-white rounded-md px-4 py-2 mb-4">Add Sale</button>
+        <div className="bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none">
+            <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl'>
+        <h1 className=" text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
+            SALES</h1>
+            <button onClick={openModal} className="btn btn-lg mt-6 border-green-600 bg-green-500 shadow-2xl btn-secondary mr-4 "> 
+            <FaShoppingBasket />
+            Add Sale</button>
+            </div>
             <div className="grid grid-cols-1 gap-4">
                 {/* {sales.map(sale => (
                     <SalesCard key={sale._id} sale={sale} />

@@ -10,9 +10,9 @@ const Footer = () => {
       {/* Grid */}
       <div className="text-center">
 
-      <div className='py-4 '>
+      <div >
       <span>Select Theme: </span>
-      <select className="select select-sm" value={theme} onChange={e => setTheme(e.target.value)}>
+      <select className="select select-sm pb-1 pt-1" value={theme} onChange={e => setTheme(e.target.value)}>
         <option value="light">light</option>
         <option value="cupcake">Cupcake</option>
         <option value="dark">Dark</option>
@@ -38,7 +38,7 @@ const Footer = () => {
             </a>{' '}
             family.
           </p> */}
-          <p className="">Copyright © 2024 - All right reserved by Bajlesh Party Private Limited</p>
+          <p className="">Copyright © 2024 - All right reserved by Bajlesh & sons Party Private Limited</p>
         </div>
 
         {/* Social Brands */}

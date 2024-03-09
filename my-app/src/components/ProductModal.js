@@ -577,6 +577,7 @@
 import React, { useState,  useRef } from "react";
 import { IoMdCloseCircle, IoIosAddCircle } from "react-icons/io";
 import { showAlert } from '@/utils/showAlert';
+import { FaCameraRotate } from "react-icons/fa6";
 // import QrReader from "react-qr-scanner";
 // import Modal from "react-modal";
 // Check if window is defined to determine if it's running in a browser environment
@@ -702,20 +703,23 @@ console.log(productData);
     >
       <div className="flex items-center justify-center min-h-screen">
         <div className="bg-slate-400 p-8 rounded-lg shadow-lg relative">
+        <div className="flex justify-end gap-x-80 mb-10  ">
+        <h2 className="text-2xl font-semibold ">Add Product</h2>
           <button
             type="button"
-            className="bg-black rounded-full absolute top-0 right-3 mt-4 mr-4"
+            className="rounded-full border-0"
             onClick={onClose}
           >
             <IoMdCloseCircle size={24} />
           </button>
-          <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
+          </div>
           <form onSubmit={handleSubmit}>
+          <label className="block text-white ml-8">Scan QR Code:</label>
             <div
-              className="mb-4"
+              className="mb-4 border-2 border-black"
               style={{ maxWidth: "400px", margin: "0 auto" }}
             >
-              <label className="block text-white">Scan QR Code:</label>
+          
               {isOpen && (
                 
                 <QrReader
@@ -734,7 +738,9 @@ console.log(productData);
             </div>
 
             <div className="mb-4">
-              <button type="button" className="btn btn-outline btn-accent" onClick={switchCamera}>Switch Camera</button>
+            <button type="button" className="btn  border-green-600 bg-green-500 shadow-2xl btn-secondary mt-5 ml-6" onClick={switchCamera}>
+                 <FaCameraRotate  size={24}/>
+                Switch Camera</button>
             </div>
 
             <div className="mb-4">
@@ -742,7 +748,7 @@ console.log(productData);
 </div>
 
             <div className="mb-4">
-              <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn border-green-600 bg-green-500 shadow-2xl btn-secondary ml-6">
                 <IoIosAddCircle size={24} />
                 Add Product
               </button>

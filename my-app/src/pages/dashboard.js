@@ -220,9 +220,9 @@ const Dashboard = () => {
 
 
   return (
-    <div className="container min-h-screen mx-auto px-8 py-16 ">
+    <div className="bg-gradient-to-r from-cyan-500 to-cyan-900 min-h-screen mx-auto px-8 py-16 ">
       <header className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold  ">Warehouse Dashboard</h1>
+        <h1 className=" bg-cyan-50 bg-opacity-55 rounded-lg pt-5 pb-5 pr-5 pl-5text-3xl font-bold  ">Warehouse Dashboard</h1>
         {/* {isLoggedIn && (
           <button onClick={handleLogout} className="text-gray-600 hover:text-red-500">
             Logout
@@ -286,7 +286,8 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <section className="mt-10 mb-8 flex justify-end items-center">
+      <section className="mt-10 mb-8 flex justify-end items-center ">
+        <div>
         {/* <input
           type="text"
           placeholder="Search by product name"
@@ -294,11 +295,12 @@ const Dashboard = () => {
           onChange={handleSearch}
           className="border border-gray-300 rounded px-4 py-2 w-full"
         /> */}
-        <label className="input input-bordered flex items-center justify-end gap-2">
+        <label className="input input-bordered flex items-center justify-end gap-2 bg-gradient-to-r from-cyan-500 to-cyan-900 text-gray-900">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-          <input type="text" className="grow" placeholder="Search by product name" value={searchQuery} onChange={handleSearch} />
+          <input type="text" className="grow text-gray-800" placeholder="Search by product name" value={searchQuery} onChange={handleSearch} />
           <span className="badge badge-info">Search</span>
         </label>
+        </div>
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-4">Latest Products</h2>
