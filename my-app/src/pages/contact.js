@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { myFetch } from "@/utils/myFetch";
 import { showAlert } from "@/utils/showAlert";
 
-function contact() {
+const contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
