@@ -34,6 +34,7 @@ const Signup = () => {
 //   };
 const handleChange = (e) => {
   const { name, value } = e.target || e;
+  console.log(name, value);
       // Update state according to input name
     switch (name) {
       case 'email':
@@ -66,6 +67,11 @@ const handleChange = (e) => {
       setError('Passwords do not match');
       return;
     }
+
+    if (!phoneNumber) {
+      setError('Phone number is required');
+      return;
+  }
 
 
     try {
@@ -188,10 +194,10 @@ const handleChange = (e) => {
                     required
                     placeholder="Enter phone number"
                     value={phoneNumber}
-                    onChange={(value) => handleChange(value, 'phoneNumber')}
+                    onChange={(value) => setPhoneNumber(value)}
                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
 
-                    // error={ value ? (isValidPhoneNumber(value) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                    error={ phoneNumber ? (isValidPhoneNumber(phoneNumber) ? undefined : 'Invalid phone number') : 'Phone number required'}
                   />
                    
                   </div>
