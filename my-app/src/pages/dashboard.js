@@ -97,6 +97,8 @@ const Dashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track user login status
   const [ProductData, setProductData] = useState(0); // State for total quantities
   const [totalSales, setTotalSales] = useState(0); // State for total sales
+  const [latestProducts, setLatestProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   // const [recentActivities, setRecentActivities] = useState([]);
 
 
@@ -191,6 +193,32 @@ const Dashboard = () => {
     fetchTotalSales();
   }, []);
 
+  useEffect(() => {
+    const fetchLatestProducts = async () => {
+      try {
+        const response = await fetch(`${process.env.API_URL}api/inventory`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch latest products');
+        }
+        const { products } = await response.json();
+        setLatestProducts(products);
+      } catch (error) {
+        console.error('Error fetching latest products:', error);
+      }
+    };
+
+    fetchLatestProducts();
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredProducts = latestProducts.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ).slice(0, 5);
+
+
   return (
     <div className="container min-h-screen mx-auto px-8 py-16 ">
       <header className="flex items-center justify-between mb-8">
@@ -216,37 +244,92 @@ const Dashboard = () => {
             <p className="text-2xl font-bold text-blue-600">{totalSales}</p>
           </div>
         </div> */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-           <h2 className="text-xl font-semibold mb-4 text-gray-800">Inventory Overview</h2>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-             <div className="bg-gray-100 p-4 rounded-md">
-               <h3 className="text-lg font-semibold text-gray-800">Total Products</h3>
-               <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
-               
-                {/* <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p> */}
-             </div>
-             <div className="bg-gray-100 p-4 rounded-md">
-               <h3 className="text-lg font-semibold text-gray-800">Total Sales</h3>
-               <p className="text-2xl font-bold text-blue-600">{totalSales}</p>
-             </div>
-             {/* <div className="bg-gray-100 p-4 rounded-md">
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+            Inventory Overview
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gray-100 p-4 rounded-md">
+              <h3 className="text-lg font-semibold text-gray-800">
+                Total Products
+              </h3>
+              <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
+
+              {/* <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p> */}
+            </div>
+            <div className="bg-gray-100 p-4 rounded-md">
+              <h3 className="text-lg font-semibold text-gray-800">
+                Total Sales
+              </h3>
+              <p className="text-2xl font-bold text-blue-600">{totalSales}</p>
+            </div>
+            {/* <div className="bg-gray-100 p-4 rounded-md">
                <h3 className="text-lg font-semibold text-gray-800">Total Locations</h3>
                <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalLocations}</p>
              </div> */}
-           </div>
-         </div>  
-         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">Recent Activities</h2>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+            Recent Activities
+          </h2>
           <ul className="divide-y divide-gray-200">
-            {recentActivities.map(activity => (
+            {recentActivities.map((activity) => (
               <li key={activity.id} className="py-2">
                 <p className="text-sm text-gray-600">{activity.action}</p>
-                <p className="text-xs text-gray-400">{new Date(activity.timestamp).toLocaleString()}</p>
+                <p className="text-xs text-gray-400">
+                  {new Date(activity.timestamp).toLocaleString()}
+                </p>
               </li>
             ))}
           </ul>
         </div>
-           </section>
+      </section>
+
+      <section className="mt-10 mb-8 flex justify-end items-center">
+        {/* <input
+          type="text"
+          placeholder="Search by product name"
+          value={searchQuery}
+          onChange={handleSearch}
+          className="border border-gray-300 rounded px-4 py-2 w-full"
+        /> */}
+        <label className="input input-bordered flex items-center justify-end gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+          <input type="text" className="grow" placeholder="Search by product name" value={searchQuery} onChange={handleSearch} />
+          <span className="badge badge-info">Search</span>
+        </label>
+      </section>
+      <section>
+        <h2 className="text-xl font-semibold mb-4">Latest Products</h2>
+        
+        {filteredProducts.length > 0 ? (
+    <table className="w-full">
+      <thead>
+        <tr>
+          <th className="text-left">Name</th>
+          <th className="text-left">Type</th>
+          <th className="text-left">Description</th>
+          <th className="text-left">Unit Price</th>
+          <th className="text-left">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredProducts.map((product) => (
+          <tr key={product.id}>
+            <td>{product.name}</td>
+            <td>{product.type}</td>
+            <td>{product.description}</td>
+            <td>{product.unitPrice}</td>
+            <td>{product.quantity}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : (
+    <p>No products found</p>
+  )}
+      </section>
     </div>
   );
 };
