@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
 
   return (
-    <div className="mx-auto">
+    <div className=" bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none">
         <div className="text-sm px-8 breadcrumbs">
         <ul>
           <li><Link href="/dashboard">Dashboard</Link></li> 
@@ -34,7 +34,7 @@ const ProfilePage = () => {
 
         <div className="card rounded bg-base-300">
           <div className='card-body'>
-            <h1 className="font-semibold text-6xl       ">PROFILE</h1>
+            <h1 className=" text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">PROFILE</h1>
             
           <p className="text-lg font-semibold mb-2">Company Name: {authUser?.companyName}</p>
           <p className="mb-2">Role: {authUser?.role}</p>

@@ -222,7 +222,7 @@ const Dashboard = () => {
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-cyan-900 min-h-screen mx-auto px-8 py-16 ">
       <header className="flex items-center justify-between mb-8">
-        <h1 className=" bg-cyan-50 bg-opacity-55 rounded-lg pt-5 pb-5 pr-5 pl-5text-3xl font-bold  ">Warehouse Dashboard</h1>
+        <h1 className="  text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl text-neutral font-semibold mb-6">WAREHOUSE DASHBOARD</h1>
         {/* {isLoggedIn && (
           <button onClick={handleLogout} className="text-gray-600 hover:text-red-500">
             Logout
@@ -245,21 +245,21 @@ const Dashboard = () => {
           </div>
         </div> */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+          <h2 className="text-xl text-white bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl pb-2 pt-2 font-bold">
             Inventory Overview
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-100 p-4 rounded-md">
-              <h3 className="text-lg font-semibold text-gray-800">
-                Total Products
+            <div className="bg-slate-500 rounded-xl p-3 shadow-2xl">
+              <h3 className="text-lg font-semibold text-white">
+                Total Products :
               </h3>
               <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
 
               {/* <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p> */}
             </div>
-            <div className="bg-gray-100 p-4 rounded-md">
-              <h3 className="text-lg font-semibold text-gray-800">
-                Total Sales
+            <div className="bg-slate-500 rounded-xl p-3 shadow-2xl">
+              <h3 className="text-lg font-semibold text-white">
+                Total Sales :
               </h3>
               <p className="text-2xl font-bold text-blue-600">{totalSales}</p>
             </div>
@@ -270,7 +270,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+          <h2 className="text-xl text-white bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl pb-2 pt-2 font-bold">
             Recent Activities
           </h2>
           <ul className="divide-y divide-gray-200">
@@ -303,13 +303,14 @@ const Dashboard = () => {
         </div>
       </section>
       <section>
-        <h2 className="text-xl font-semibold mb-4">Latest Products</h2>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl text-white bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl pb-2 pt-2 font-bold">Latest Products</h2>
         
         {filteredProducts.length > 0 ? (
-    <table className="w-full">
+    <table className="w-full  bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl">
       <thead>
         <tr>
-          <th className="text-left">Name</th>
+          <th className="text-left pl-3">Name</th>
           <th className="text-left">Type</th>
           <th className="text-left">Description</th>
           <th className="text-left">Unit Price</th>
@@ -319,7 +320,7 @@ const Dashboard = () => {
       <tbody>
         {filteredProducts.map((product) => (
           <tr key={product.id}>
-            <td>{product.name}</td>
+            <td className='pl-3'>{product.name}</td>
             <td>{product.type}</td>
             <td>{product.description}</td>
             <td>{product.unitPrice}</td>
@@ -331,6 +332,7 @@ const Dashboard = () => {
   ) : (
     <p>No products found</p>
   )}
+  </div>
       </section>
     </div>
   );
