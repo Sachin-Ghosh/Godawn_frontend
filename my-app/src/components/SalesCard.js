@@ -129,15 +129,17 @@ const SalesCard = ({ sale }) => {
 // console.log('Total Price:', totalPrice);
 
     return (
-        <div className="p-4 border rounded-md shadow-md">
+    <div className="bg-white shadow-2xl w-full rounded-lg p-4 m-3">
+        <h2 className="text-xl text-white bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl pb-2 pt-2 font-bold">Product Type: {product.products.type}</h2>
+        <div className='bg-slate-500 rounded-xl p-3 shadow-2xl'>
             <p>Buyer: {buyerName}</p>
             <p>Name: {product.products.name}</p>
             <p>Type: {product.products.type}</p>
             <p>Unit Price: {product.products.unitPrice}</p>
             <p>Quantity: {soldQuantity}</p>
             <p>Total Price: {totalPrice}</p>
-            
-        </div>
+            </div>  
+      </div>
     );
 };
 
