@@ -83,6 +83,15 @@ import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { PiUser } from "react-icons/pi";
+import { MdDashboardCustomize,MdOutlineInventory } from "react-icons/md";
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
+import { FaShoppingBasket } from "react-icons/fa";
+import { BiSolidReport } from "react-icons/bi";
+import { IoQrCodeOutline } from "react-icons/io5";
+
+
+
+
 
 const Navbar = () => {
   const { token, logout,authUser } = useAuth();
@@ -118,58 +127,67 @@ const Navbar = () => {
 
   return (
 
-    <div className="navbar bg-base-200"
+    <div className=" fixed navbar bg-black  bg-opacity-75"
     style={{ borderBottom: "1.4px solid #a4a4a4" }}>
        {token && (
        <div>
       {/* Menu Icon */}
-      <FiMenu className="cursor-pointer" size={24} onClick={toggleSidebar} />
+      <FiMenu className="cursor-pointer" size={30} onClick={toggleSidebar} />
 
       {/* Sidebar */}
       {sidebarOpen && (
         <div
           ref={sidebarRef}
-          className="fixed top-0 left-0 h-full w-38 bg-gray-800 backdrop-blur-sm bg-blue/30 p-4 flex flex-col"
+          className="fixed top-0 left-0 h-full w-44 bg-black bg-opacity-70 backdrop-blur-sm  p-4 flex flex-col"
         >
-          <ul className="space-y-4 mt-4">
+          <ul className=" space-y-8 mt-7">
             <li>
-              <Link href="/dashboard" className="text-primary" onClick={closeSidebar}>
-                
+              
+              <Link href="/dashboard" className="text-xl  gap-2 flex flex-row text-white" onClick={closeSidebar}>
+              <MdDashboardCustomize  size={24}/>
+
                   Dashboard
                
               </Link>
             </li>
             <li>
-              <Link href="/inventory" className="text-primary" onClick={closeSidebar}>
-               
+              <Link href="/inventory" className="text-xl  gap-2 flex flex-row text-white" onClick={closeSidebar}>
+              <MdOutlineInventory size={24} />
+
                   Inventory
               
               </Link>
             </li>
             <li>
-              <Link href="/sales" className="text-primary" onClick={closeSidebar}>
-               
+              <Link href="/sales" className="text-xl gap-2 flex flex-row text-white" onClick={closeSidebar}>
+              <FaShoppingBasket  size={24}/>
+
                   Sales
               
               </Link>
             </li>
             <li>
-              <Link href="/invoice" className="text-primary" onClick={closeSidebar}>
-               
+              
+              <Link href="/invoice" className="text-xl gap-2 flex flex-row text-white" onClick={closeSidebar}>
+              <LiaFileInvoiceDollarSolid size={24} />
+
                   Invoice
                
               </Link>
             </li>
             {authUser?.role === "Admin" && ( // Render the report link only for admin users
                   <li>
-                    <Link href="/report" className="text-primary" onClick={closeSidebar}>
+                    <Link href="/report" className="text-xl gap-2 flex flex-row text-white" onClick={closeSidebar}>
+                    <BiSolidReport size={24} />
+
                       Report
                     </Link>
                   </li>
                 )}
             <li>
-              <Link href="/QRCodeGenerator" className="text-primary" onClick={closeSidebar}>
-               
+              <Link href="/QRCodeGenerator" className="ttext-xl gap-2 flex flex-row text-white" onClick={closeSidebar}>
+              <IoQrCodeOutline  size={24}/>
+
               QRCode
                
               </Link>
