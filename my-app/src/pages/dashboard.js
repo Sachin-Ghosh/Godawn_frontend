@@ -253,7 +253,7 @@ const Dashboard = () => {
               <h3 className="text-lg font-semibold text-white">
                 Total Products :
               </h3>
-              <p className="text-2xl font-bold text-blue-600">{ProductData}</p>
+              <p className="text-2xl font-bold text-blue-400">{ProductData}</p>
 
               {/* <p className="text-2xl font-bold text-blue-600">{inventoryOverview.totalProducts}</p> */}
             </div>
@@ -261,7 +261,7 @@ const Dashboard = () => {
               <h3 className="text-lg font-semibold text-white">
                 Total Sales :
               </h3>
-              <p className="text-2xl font-bold text-blue-600">{totalSales}</p>
+              <p className="text-2xl font-bold text-blue-400">{totalSales}</p>
             </div>
             {/* <div className="bg-gray-100 p-4 rounded-md">
                <h3 className="text-lg font-semibold text-gray-800">Total Locations</h3>
@@ -287,7 +287,7 @@ const Dashboard = () => {
       </section>
 
       <section className="mt-10 mb-8 flex justify-end items-center ">
-        <div>
+        <div className='bg-blend-normal'>
         {/* <input
           type="text"
           placeholder="Search by product name"
@@ -295,9 +295,9 @@ const Dashboard = () => {
           onChange={handleSearch}
           className="border border-gray-300 rounded px-4 py-2 w-full"
         /> */}
-        <label className="input input-bordered flex items-center justify-end gap-2 bg-gradient-to-r from-cyan-500 to-cyan-900 text-gray-900">
+        <label className="input input-bordered border-4 flex items-center justify-end gap-2 bg-transparent text-black">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-          <input type="text" className="grow text-gray-800" placeholder="Search by product name" value={searchQuery} onChange={handleSearch} />
+          <input type="text" className="grow text-gray-800 placeholder:text-black" placeholder="Search by product name" value={searchQuery} onChange={handleSearch} />
           <span className="badge badge-info">Search</span>
         </label>
         </div>
@@ -310,7 +310,8 @@ const Dashboard = () => {
     <table className="w-full  bg-slate-500 rounded-xl pl-3 mb-3 shadow-2xl">
       <thead>
         <tr>
-          <th className="text-left pl-3">Name</th>
+        <th className="text-left pl-3">No.</th>
+        <th className="text-left">Name</th>
           <th className="text-left">Type</th>
           <th className="text-left">Description</th>
           <th className="text-left">Unit Price</th>
@@ -318,9 +319,10 @@ const Dashboard = () => {
         </tr>
       </thead>
       <tbody>
-        {filteredProducts.map((product) => (
+        {filteredProducts.map((product, index) => (
           <tr key={product.id}>
-            <td className='pl-3'>{product.name}</td>
+                      <td className="pl-3">{index + 1}</td>
+          <td>{product.name}</td>
             <td>{product.type}</td>
             <td>{product.description}</td>
             <td>{product.unitPrice}</td>
@@ -330,7 +332,7 @@ const Dashboard = () => {
       </tbody>
     </table>
   ) : (
-    <p>No products found</p>
+    <p className=' bg-slate-500 rounded-3xl pl-3 mb-3 shadow-2xl'>No products found</p>
   )}
   </div>
       </section>

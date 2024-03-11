@@ -64,7 +64,7 @@ const InventoryPage = () => {
       </button>
      
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4  rounded-lg bg-white bg-opacity-25 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 rounded-lg bg-white bg-opacity-25 gap-6">
         
         {
         products.map((product) => (

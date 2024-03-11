@@ -54,11 +54,13 @@ export default function Invoice() {
   };
 
   return (
- <div className='bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen pt-36'>
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg  ">
+    <div className="flex justify-between max-w-screen-xl mx-auto px-4 py-8">
+      {/* Form Section */}
+      <div className="w-1/2">
+    <div className="max-w-md mx-auto  p-8 rounded-lg shadow-lg">
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="customerName" className="block text-sm font-medium text-gray-700">Customer Name:</label>
+        <label htmlFor="customerName" className="block text-sm font-medium ">Customer Name:</label>
         <input
           type="text"
           id="customerName"
@@ -68,7 +70,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="productName" className="block text-sm font-medium text-gray-700">Product Name:</label>
+        <label htmlFor="productName" className="block text-sm font-medium ">Product Name:</label>
         <input
           type="text"
           id="productName"
@@ -78,7 +80,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Quantity:</label>
+        <label htmlFor="quantity" className="block text-sm font-medium ">Quantity:</label>
         <input
           type="number"
           id="quantity"
@@ -88,7 +90,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="unitPrice" className="block text-sm font-medium text-gray-700">Unit Price:</label>
+        <label htmlFor="unitPrice" className="block text-sm font-medium ">Unit Price:</label>
         <input
           type="number"
           id="unitPrice"
@@ -98,7 +100,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="totalPrice" className="block text-sm font-medium text-gray-700">Total Price:</label>
+        <label htmlFor="totalPrice" className="block text-sm font-medium ">Total Price:</label>
         <input
           type="number"
           id="totalPrice"
@@ -108,7 +110,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="paymentStatus" className="block text-sm font-medium text-gray-700">Payment Status:</label>
+        <label htmlFor="paymentStatus" className="block text-sm font-medium ">Payment Status:</label>
         <select
           id="paymentStatus"
           value={paymentStatus}
@@ -121,6 +123,10 @@ export default function Invoice() {
       </div>
       <button type="submit" className="btn bg-green-500 border-green-500 btn-secondary">Generate Invoice</button>
     </form>
+    </div>
+      </div>
+      <div className="w-1/2">
+      {/* <div className="h-full flex items-center justify-center"> */}
     <InvoicePDF
         invoice={{
           customerName,
@@ -131,7 +137,8 @@ export default function Invoice() {
           paymentStatus,
         }}
       />
-  </div>
+      {/* </div> */}
+      </div>
   </div>
   );
 }

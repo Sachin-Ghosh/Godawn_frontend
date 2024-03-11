@@ -109,7 +109,7 @@ export default function InvoicePDF( { invoice } ) {
             }
           </PDFDownloadLink>
 
-          <PDFViewer width="100%" height="100%">
+          <PDFViewer width="100%" height="200%">
             <PDF />
           </PDFViewer>
         </div>
