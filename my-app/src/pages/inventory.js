@@ -49,7 +49,7 @@ const InventoryPage = () => {
   return (
     
     <div className="bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none">
-      <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl' >
+      <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-5 ' >
       <div >
         <h1 className="  text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl text-neutral font-semibold mb-6">INVENTORY</h1>
         </div>
@@ -64,7 +64,7 @@ const InventoryPage = () => {
       </button>
      
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 rounded-lg bg-white bg-opacity-25 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4  rounded-lg bg-white bg-opacity-25 gap-6">
         
         {
         products.map((product) => (

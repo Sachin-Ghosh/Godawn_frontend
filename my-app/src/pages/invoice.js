@@ -54,7 +54,8 @@ export default function Invoice() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+ <div className='bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen pt-36'>
+    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg  ">
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="customerName" className="block text-sm font-medium text-gray-700">Customer Name:</label>
@@ -118,7 +119,7 @@ export default function Invoice() {
           <option value="Pending">Pending</option>
         </select>
       </div>
-      <button type="submit" className="btn btn-primary">Generate Invoice</button>
+      <button type="submit" className="btn bg-green-500 border-green-500 btn-secondary">Generate Invoice</button>
     </form>
     <InvoicePDF
         invoice={{
@@ -130,6 +131,7 @@ export default function Invoice() {
           paymentStatus,
         }}
       />
+  </div>
   </div>
   );
 }
