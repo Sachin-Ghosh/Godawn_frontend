@@ -10,9 +10,9 @@ const Calendar = ({ selectedDate, handleDateChange }) => {
       onChange={date => handleDateChange(date)}
       dateFormat="dd/MM/yyyy"
       placeholderText="Select a date"
+      className=' text-black'
       style={{
-        color: 'black',
-        backgroundColor: 'white',
+        
         border: '1px solid #ced4da',
         borderRadius: '5px',
         padding: '8px',
