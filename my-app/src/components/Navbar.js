@@ -88,6 +88,7 @@ import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
 import { FaShoppingBasket } from "react-icons/fa";
 import { BiSolidReport } from "react-icons/bi";
 import { IoQrCodeOutline } from "react-icons/io5";
+import Image from "next/image";
 
 
 
@@ -127,7 +128,7 @@ const Navbar = () => {
 
   return (
 
-    <div className=" fixed navbar bg-black  bg-opacity-75"
+    <div className=" fixed navbar bg-gradient-to-r from-cyan-900 to-cyan-950 "
     style={{ borderBottom: "1.4px solid #a4a4a4" }}>
        {token && (
        <div>
@@ -199,6 +200,14 @@ const Navbar = () => {
       )}
 
       {/* Rest of Navbar */}
+      <div className=" h-10">
+      <Image
+      src="/images/logo.png"
+      width={150}
+      height={250}
+      alt="logo"
+    />
+  </div>
       <div className="flex-1">
         <Link href={token ? "/dashboard" : "/ "} className="btn btn-ghost normal-case text-xl text-primary">
           Godawn

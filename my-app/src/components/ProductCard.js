@@ -28,7 +28,7 @@ const ProductCard = ({ product,onUpdate }) => {
       <p className="text-white">Unit Price: ₹{product.unitPrice}</p>
       <p className="text-white">Quantity: {product.quantity}</p>
       </div>
-      <button className=" btn  bg-green-500 text-black border-green-500 mt-3 btn-secondary shadow-2xl" onClick={handleEdit}>
+      <button className=" btn  bg-green-500 text-black border-green-600 mt-3 shadow-2xl" onClick={handleEdit}>
         Edit
       </button>
       <ProductModal

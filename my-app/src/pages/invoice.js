@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 // import InvoicePDF from './InvoicePDF';
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
+
 import dynamic from 'next/dynamic';
 const InvoicePDF = dynamic(() => import('../components/InvoicePdf'));
 
@@ -54,19 +56,21 @@ export default function Invoice() {
   };
 
   return (
-    <div className="flex justify-between max-w-screen-xl mx-auto px-4 py-8">
+    
+    <div className="flex bg-gradient-to-r from-cyan-900 to-cyan-950 justify-end gap-x-60 px-4 py-8">
+     
       {/* Form Section */}
-      <div className="w-1/2">
-    <div className="max-w-md mx-auto  p-8 rounded-lg shadow-lg">
+      <div className=" w-80 mt-24  bg-white ">
+    <div className="p-8 rounded-lg shadow-lg">
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="customerName" className="block text-sm font-medium ">Customer Name:</label>
+        <label htmlFor="customerName" className="block text-sm font-medium text-black">Customer Name:</label>
         <input
           type="text"
           id="customerName"
           value={customerName}
           onChange={(e) => setCustomerName(e.target.value)}
-          className="input input-bordered"
+          className="input input-bordered text-white"
         />
       </div>
       <div>
@@ -125,7 +129,7 @@ export default function Invoice() {
     </form>
     </div>
       </div>
-      <div className="w-1/2">
+      <div className="w-1/2 mt-24">
       {/* <div className="h-full flex items-center justify-center"> */}
     <InvoicePDF
         invoice={{

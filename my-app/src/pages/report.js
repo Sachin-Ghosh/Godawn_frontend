@@ -269,14 +269,17 @@ const fetchData = async () => {
     setSelectedOptionLine(option);
   };
   return (
-    <div>
-      <h1>Report Page</h1>
+    <div className='bg-gradient-to-r from-cyan-900 to-cyan-950 min-h-screen mx-auto px-4 py-8 select-none '>
+      <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-11'>
+      <h1 className=' text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6'>Report Page</h1>
+      </div>
       {isAdmin ? (
-        <div>
+        <div className=' mt-16 bg-gradient-to-r from-cyan-900 to-cyan-950'>
 
       <div style={{ display: "flex" }}>
-        <div style={{ flex: 1 }}>
+        <div  className='bg-white shadow-2xl w-96 rounded-lg p-4 m-3'style={{ flex: 1 }}>
           <select
+           className=' text-black'
             value={selectedOptionPie}
             onChange={(e) => handleOptionChangePie(e.target.value)}
           >
@@ -290,10 +293,11 @@ const fetchData = async () => {
           />
         </div>
         {/* Similar dropdown and calendar for line graph */}
-        <div style={{ flex: 1 }}>
+        <div className='bg-white shadow-2xl w-96 rounded-lg p-4 m-3' style={{ flex: 1 }}>
           <select
             value={selectedOptionLine}
             onChange={(e) => handleOptionChangeLine(e.target.value)}
+            className=' text-black'
           >
             <option value="date">Date</option>
             <option value="month">Month</option>
