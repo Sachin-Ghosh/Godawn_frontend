@@ -203,13 +203,13 @@ const Navbar = () => {
       <div className=" h-10">
       <Image
       src="/images/logo.png"
-      width={150}
-      height={250}
+      width={200}
+      height={190}
       alt="logo"
     />
   </div>
       <div className="flex-1">
-        <Link href={token ? "/dashboard" : "/ "} className="btn btn-ghost normal-case text-xl text-primary">
+        <Link href={token ? "/dashboard" : "/ "} className="btn btn-ghost normal-case text-4xl text-primary">
           Godawn
         </Link>
       </div>

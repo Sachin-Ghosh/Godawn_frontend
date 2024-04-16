@@ -325,8 +325,8 @@ if (Array.isArray(data.products)) {
     return (
         <div className="bg-gradient-to-r from-cyan-900 to-cyan-950 min-h-screen mx-auto px-4 py-8 select-none ">
             <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-6'>
-        <h1 className=" text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
-            SALES</h1>
+        <h1 className=" flex align-middle gap-3 text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
+        <FaShoppingBasket /> SALES</h1>
             <button onClick={openModal} className="btn btn-lg mt-6 border-green-600 bg-green-500 shadow-2xl btn-secondary mr-4 "> 
             <FaShoppingBasket />
             Add Sale</button>
