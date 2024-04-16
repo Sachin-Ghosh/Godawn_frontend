@@ -115,6 +115,7 @@ import Calendar from '../components/Calendar';
 import PieChart from '../components/PieChart';
 import LineGraph from '../components/LineGraph';
 import { useAuth } from '@/context/AuthContext';
+import { BiSolidReport } from "react-icons/bi";
 
 const ReportPage = () => {
   const { authUser } = useAuth();
@@ -271,7 +272,7 @@ const fetchData = async () => {
   return (
     <div className='bg-gradient-to-r from-cyan-900 to-cyan-950 min-h-screen mx-auto px-4 py-8 select-none '>
       <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-11'>
-      <h1 className=' text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6'>Report Page</h1>
+      <h1 className=' text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6 flex align-middle gap-3'>  <BiSolidReport size={45} />Report Page</h1>
       </div>
       {isAdmin ? (
         <div className=' mt-16 bg-gradient-to-r from-cyan-900 to-cyan-950'>

@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
+import { IoQrCodeOutline } from "react-icons/io5";
 
 const QRCodeGeneratorPage = () => {
   const [formData, setFormData] = useState({
@@ -107,10 +108,13 @@ const handleGenerateQRCode = async (e) => {
 
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">QR Code Generator</h1>
-      <form onSubmit={handleGenerateQRCode}>
-        <div className="mb-4">
+    <div className="  min-h-screen mx-auto px-4 py-8 select-none  bg-gradient-to-r from-cyan-900 to-cyan-950">
+     <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-11'>
+      <h1 className=' text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6 flex align-middle gap-3'> <IoQrCodeOutline  size={45}/> QRCodeGenerator</h1>
+      </div>
+      <div className='flex align-middle mt-10 gap-40 ml-32'>
+      <form onSubmit={handleGenerateQRCode} className='bg-white px-14  py-14'>
+        <div className="mb-4 ">
           <label className="block text-gray-700">Product Type:</label>
           <input
             type="text"
@@ -161,9 +165,10 @@ const handleGenerateQRCode = async (e) => {
         </div>
         <button type="submit" className="btn btn-primary">Generate QR Code</button>
       </form>
-      <div className="mt-8">
+      <div className=" bg-white px-3 py-3 w-auto h-96">
         <QRCode value={JSON.stringify(formData)} />
         <button className="btn btn-primary mt-4" onClick={handleDownload}>Download QR Code</button>
+      </div>
       </div>
     </div>
   );

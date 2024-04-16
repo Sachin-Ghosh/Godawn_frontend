@@ -57,10 +57,13 @@ export default function Invoice() {
 
   return (
     
-    <div className="flex bg-gradient-to-r from-cyan-900 to-cyan-950 justify-end gap-x-60 px-4 py-8">
-     
+    <div className=" bg-gradient-to-r from-cyan-900 to-cyan-950 gap-x-60 px-4 py-8">
+     <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-11'>
+      <h1 className=' text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6 flex align-middle gap-3'><LiaFileInvoiceDollarSolid size={45} />Invoice Generator</h1>
+      </div>
       {/* Form Section */}
-      <div className=" w-80 mt-24  bg-white ">
+      <div className='flex align-middle gap-x-60 px-4 py-8 '>
+      <div className=" w-80  bg-white">
     <div className="p-8 rounded-lg shadow-lg">
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
@@ -74,7 +77,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="productName" className="block text-sm font-medium ">Product Name:</label>
+        <label htmlFor="productName" className="block  text-black text-sm font-medium ">Product Name:</label>
         <input
           type="text"
           id="productName"
@@ -84,7 +87,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="quantity" className="block text-sm font-medium ">Quantity:</label>
+        <label htmlFor="quantity" className="block text-black text-sm font-medium ">Quantity:</label>
         <input
           type="number"
           id="quantity"
@@ -94,7 +97,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="unitPrice" className="block text-sm font-medium ">Unit Price:</label>
+        <label htmlFor="unitPrice" className="block  text-black  text-sm font-medium ">Unit Price:</label>
         <input
           type="number"
           id="unitPrice"
@@ -104,7 +107,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="totalPrice" className="block text-sm font-medium ">Total Price:</label>
+        <label htmlFor="totalPrice" className="block text-black text-sm font-medium ">Total Price:</label>
         <input
           type="number"
           id="totalPrice"
@@ -114,7 +117,7 @@ export default function Invoice() {
         />
       </div>
       <div>
-        <label htmlFor="paymentStatus" className="block text-sm font-medium ">Payment Status:</label>
+        <label htmlFor="paymentStatus" className="block text-black text-sm font-medium ">Payment Status:</label>
         <select
           id="paymentStatus"
           value={paymentStatus}
@@ -142,6 +145,7 @@ export default function Invoice() {
         }}
       />
       {/* </div> */}
+      </div>
       </div>
   </div>
   );
