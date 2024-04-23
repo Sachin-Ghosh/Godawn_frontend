@@ -44,13 +44,7 @@ export default function Home() {
           </h1>
 
           <div className="mt-7 grid gap-3 w-full sm:inline-flex">
-            {/* <button className="btn btn-primary">
-            <Link className="" href="#">
-              Try it out
-            </Link>
-            <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-
-            </button> */}
+            
             <button className="btn btn-secondary">
             <Link className="" href="/contact">
               Contact us
@@ -87,11 +81,7 @@ export default function Home() {
           <div className="absolute inset-0 w-full h-full">
             <div className="flex flex-col justify-center items-center w-full h-full">
 
-              {/* <button onClick={()=>document.getElementById('my_modal_1').showModal()}  className="btn btn-secondary">
-                <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  Play the overview
-              </button> */}
-
+          
               <dialog id="my_modal_1" className="modal">
               <div className="modal-box p-0 max-w-none w-auto">
                 
@@ -123,11 +113,7 @@ export default function Home() {
       <h1 className="sm:text-5xl text-2xl leading-tight font-bold title-font mb-4">
         Every Warehouse loves these features
       </h1>
-      {/* <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">
-        Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-        taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
-        pug.
-      </p> */}
+      
       <div className="flex mt-6 justify-center">
         <div className="w-16 h-1 rounded-full bg-primary inline-flex" />
       </div>
@@ -162,20 +148,7 @@ export default function Home() {
           <p className="leading-relaxed opacity-80">
           One of the most important aspects of inventory management is stock management. You need to ensure you have enough stock to meet the demand but not too much that you incur unnecessary costs and wastage. Further, you need to organise your stock to make it easy to access, identify, and manage. You can make your life easier by effortlessly moving stock between your warehouses and organising your inventory. For better identification and management, you can add items in different batches and serials.
           </p>
-          {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
-            Learn More
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a> */}
+          
         </div>
       </div>
       <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
@@ -190,20 +163,7 @@ export default function Home() {
           <p className="leading-relaxed opacity-80">
           You need to manage every aspect of your sales and purchases with ease. Further, you must track packages and shipments, ensuring timely deliveries and happy customers.With the best order management app by Vyapar, you can create and send professional invoices and bills to your customers and suppliers. You can also customise your invoices and statements with your logo, signature, terms and conditions, and more. You can streamline your order management process and improve customer satisfaction and loyalty.
           </p>
-          {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
-            Learn More
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a> */}
+         
         </div>
       </div>
 
@@ -220,20 +180,7 @@ export default function Home() {
           <p className="leading-relaxed text-base">
           Get instant updates on your supply chain, keep an eye on stock movements, check inventory levels, and use the latest data to make intelligent decisions. React quickly to changes and save time and money. One of the critical benefits of inventory management is gaining real-time visibility. You can optimise decision-making with stock transfer reports. With the Godawn web, you can gain real-time visibility and optimise decision-making. You can improve your business efficiency and profitability by using data-driven strategies.
           </p>
-          {/* <a className="mt-3 text-indigo-500 inline-flex items-center">
-            Learn More
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a> */}
+         
         </div>
       </div>
 
@@ -270,9 +217,7 @@ export default function Home() {
       </div>
 
     </div>
-    {/* <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-      Button
-    </button> */}
+ 
   </div>
 </section>
 
@@ -290,7 +235,6 @@ export default function Home() {
          7208253036
       </h1>
       </div>
-      {/* <button className="btn btn-primary">Get Started</button> */}
     </div>
   </div>
   

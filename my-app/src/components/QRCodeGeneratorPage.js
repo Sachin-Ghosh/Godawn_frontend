@@ -19,23 +19,12 @@ const QRCodeGeneratorPage = () => {
     }));
   };
 
-//   const handleGenerateQRCode = (e) => {
-//     e.preventDefault();
-//     // Logic to generate QR code based on formData
-//     // You can use libraries like qr-image to generate QR code
-//   };
-
-//   const handleDownload = () => {
-//     // Logic to download the QR code as an image
-//   };
-
 const handleGenerateQRCode = async (e) => {
     e.preventDefault();
   
-    // Logic to generate QR code based on formData
-    // You can use libraries like qr-image to generate QR code
+    
     try {
-      // Fetch the QR code image data from the backend
+     
       const response = await fetch(`${process.env.API_URL}api/generateQRCode`, {
         method: 'POST',
         headers: {

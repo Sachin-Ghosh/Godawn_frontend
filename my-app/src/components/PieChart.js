@@ -1,37 +1,6 @@
 // // components/PieChart.js
-// import React from 'react';
-// // import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
-// // import Chart from 'chart.js/auto';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
-// import { Pie } from 'react-chartjs-2';
-
-// // ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
-
-// const PieChart = ({ data }) => {
-//   const chartData = {
-//     labels: ['Products Added', 'Products Sold'],
-//     datasets: [
-//       {
-//         data: [data.totalProductsAdded, data.totalProductsSold],
-//         backgroundColor: ['#FF6384', '#36A2EB'],
-//         hoverBackgroundColor: ['#FF6384', '#36A2EB']
-//       }
-//     ]
-//   };
-
-//   return (
-//     <div>
-//       <h2>Pie Chart</h2>
-//       <Pie data={chartData} />
-//     </div>
-//   );
-// };
-
-// export default PieChart;
-
-
-// components/PieChart.js
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
