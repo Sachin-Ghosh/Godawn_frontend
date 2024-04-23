@@ -46,7 +46,13 @@ export default function Login() {
       console.log('Login successful:', data);
       login(data);
 
-      router.push('/'); // Redirect to dashboard on successful login
+      // router.push('/'); // Redirect to dashboard on successful login
+    // Redirect based on user role
+    if (data.user?.role === 'User') {
+      router.push('/inventory');
+    } else if (data.user?.role === 'Admin') {
+      router.push('/dashboard');
+    }
     } catch (error) {
       console.error('Login error:', error.message);
       setErrorMessage('Wrong email or password');

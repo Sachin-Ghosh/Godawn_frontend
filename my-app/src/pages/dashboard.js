@@ -97,7 +97,9 @@ import { MdDashboardCustomize,MdOutlineInventory } from "react-icons/md";
 const Dashboard = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track user login status
+  const [products, setProducts] = useState([]);
   const [ProductData, setProductData] = useState(0); // State for total quantities
+  const [ProductQuantity, setProductQuantity] = useState(0); // State for total quantities
   const [totalSales, setTotalSales] = useState(0); // State for total sales
   const [latestProducts, setLatestProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -111,17 +113,17 @@ const Dashboard = () => {
       {
         id: 1,
         action: 'Added new product',
-        timestamp: '2024-03-01T12:00:00Z',
+        timestamp: '2024-04-24T12:00:00Z',
       },
       {
         id: 2,
         action: 'Updated inventory quantity',
-        timestamp: '2024-03-01T09:30:00Z',
+        timestamp: '2024-04-24T09:30:00Z',
       },
       {
         id: 3,
         action: 'Generated invoice',
-        timestamp: '2024-03-01T15:45:00Z',
+        timestamp: '2024-04-24T15:45:00Z',
       },
     ];
 
@@ -172,6 +174,30 @@ const Dashboard = () => {
     };
 
     fetchProductData();
+  }, []);
+  // Fetch total quantities from the backend
+  useEffect(() => {
+    const fetchProductQuantity = async () => {
+      try {
+        const response = await fetch(`${process.env.API_URL}api/inventory`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch total quantities');
+        }
+        // const data = await response.json();
+        // setProductData(data.ProductData);
+        // const { totalCount } = await response.json();
+        const data = await response.json();
+        setProducts(data.products);
+        
+        // Calculate total quantity
+        const totalQuantity = data.products.reduce((total, product) => total + product.quantity, 0);
+        setProductQuantity(totalQuantity);
+      } catch (error) {
+        console.error('Error fetching total quantities:', error);
+      }
+    };
+
+    fetchProductQuantity();
   }, []);
 
   // Fetch total sales from the backend
@@ -255,7 +281,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-slate-500 rounded-xl p-3 shadow-2xl">
               <h3 className="text-lg font-semibold text-white">
-                Total Products :
+                Total Product Types :
               </h3>
               <p className="text-2xl font-bold text-blue-400">{ProductData}</p>
 
@@ -266,6 +292,12 @@ const Dashboard = () => {
                 Total Sales :
               </h3>
               <p className="text-2xl font-bold text-blue-400">{totalSales}</p>
+            </div>
+            <div className="bg-slate-500 rounded-xl p-3 shadow-2xl">
+              <h3 className="text-lg font-semibold text-white">
+                Total Products :
+              </h3>
+              <p className="text-2xl font-bold text-blue-400">{ProductQuantity}</p>
             </div>
             {/* <div className="bg-gray-100 p-4 rounded-md">
                <h3 className="text-lg font-semibold text-gray-800">Total Locations</h3>

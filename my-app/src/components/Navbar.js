@@ -142,8 +142,8 @@ const Navbar = () => {
           className="fixed top-0 left-0 h-full w-44 bg-black bg-opacity-70 backdrop-blur-sm  p-4 flex flex-col"
         >
           <ul className=" space-y-8 mt-7">
+          {authUser?.role === "Admin" && ( // Render the report link only for admin users
             <li>
-              
               <Link href="/dashboard" className="text-xl  gap-2 flex flex-row text-white" onClick={closeSidebar}>
               <MdDashboardCustomize  size={24}/>
 
@@ -151,6 +151,7 @@ const Navbar = () => {
                
               </Link>
             </li>
+             )}
             <li>
               <Link href="/inventory" className="text-xl  gap-2 flex flex-row text-white" onClick={closeSidebar}>
               <MdOutlineInventory size={24} />
@@ -209,7 +210,7 @@ const Navbar = () => {
     />
   </div>
       <div className="flex-1">
-        <Link href={token ? "/dashboard" : "/ "} className="btn btn-ghost normal-case text-4xl text-primary">
+        <Link href={token ? (authUser.role === 'Admin' ? '/dashboard' : '/inventory') : '/ '} className="btn btn-ghost normal-case text-4xl text-primary">
           Godawn
         </Link>
       </div>

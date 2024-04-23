@@ -1,166 +1,116 @@
-// // Sales.js
-// import React, { useState, useEffect } from 'react';
-// import SalesCard from '../components/SalesCard';
-// import SalesModal from '../components/SalesModal';
 
-// const Sales = () => {
-//   const [sales, setSales] = useState([]);
-//   const [productOptions, setProductOptions] = useState([]);
-//   const [formData, setFormData] = useState({
-//     buyerName: '',
-//     productId: '',
-//     unitPrice: '',
-//     quantity: '',
-//     type: ''
-//   });
+// import React, { useState, useEffect } from 'react';
+// import ProductCard from '../components/ProductCard';
+// import ProductModal from '../components/ProductModal';
+
+
+// import { IoIosAddCircle } from "react-icons/io";
+
+// const InventoryPage = () => {
+//   const [products, setProducts] = useState([]);
 //   const [isModalOpen, setIsModalOpen] = useState(false);
 
-//   const openModal = () => {
+
+//    const fetchProducts = async () => {
+//     try {
+//       const response = await fetch(`${process.env.API_URL}api/inventory`);
+//       if (!response.ok) {
+//         throw new Error('Error fetching products');
+//       }
+//       const data = await response.json();
+//       console.log(data);  
+//       // setProducts(data);
+//       setProducts(data.products)
+//     } catch (error) {
+//       console.error(error.message);
+    
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchProducts();
+//   }, []);
+
+//   const handleAddProduct = () => {
 //     setIsModalOpen(true);
 //   };
 
-//   const closeModal = () => {
+//   const handleCloseModal = () => {
 //     setIsModalOpen(false);
 //   };
 
-//   // Fetch sales data
-//   useEffect(() => {
-//     const fetchSalesData = async () => {
-//       try {
-//         const response = await fetch(`${process.env.API_URL}api/sales`);
-//         if (!response.ok) {
-//           throw new Error('Failed to fetch sales data');
-//         }
-//         const data = await response.json();
-//         setSales(data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-  
-//     fetchSalesData();
-//   }, []);
-
-//   // Fetch product options
-//   useEffect(() => {
-//     const fetchProductOptions = async () => {
-//       try {
-//         const response = await fetch(`${process.env.API_URL}api/inventory`);
-//         if (!response.ok) {
-//           throw new Error('Failed to fetch product options');
-//         }
-//         const data = await response.json();
-//         console.log('Fetched product options:', data);
-//         setProductOptions(data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
-  
-//     fetchProductOptions();
-//   }, []);
-
-//   const handleChange = e => {
-//     const { name, value } = e.target;
-//     setFormData(prevState => ({
-//       ...prevState,
-//       [name]: value
-//     }));
-//     if (name === 'productId') {
-//       const selectedProduct = productOptions.find(product => product._id === value);
-//       if (selectedProduct) {
-//         setFormData(prevState => ({
-//           ...prevState,
-//           unitPrice: selectedProduct.unitPrice,
-//           type: selectedProduct.type
-//         }));
-//       }
-//     }
+//   const updateProducts = () => {
+//     fetchProducts(); // Call fetchProducts function to update products
 //   };
 
-//   const handleSubmit = async () => {
-//     try {
-//       const saleData = {
-//         buyerName: formData.buyerName,
-//         productId: formData.productId,
-//         unitPrice: formData.unitPrice,
-//         quantity: formData.quantity,
-//         type: formData.type,
-//       };
 
-//       const saleResponse = await fetch(`${process.env.API_URL}api/sales`, {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(saleData)
-//       });
 
-//       if (!saleResponse.ok) {
-//         throw new Error('Failed to add sale');
-//       }
-
-//       const newSale = await saleResponse.json();
-
-//       console.log(newSale);
-
-//         // Update the sales state with the new sale
-//         setSales(prevSales => [...(Array.isArray(prevSales) ? prevSales : []), newSale]);
-//       // After successfully adding a sale, you may choose to update the inventory as well.
-//       // If needed, update the inventory with the new sale details
-//     //   const productResponse = await fetch(`${process.env.API_URL}api/inventory/${formData.productId}`);
-//     //   if (!productResponse.ok) {
-//     //     throw new Error('Failed to fetch product details from inventory');
-//     //   }
-//     //   const product = await productResponse.json();
-
-//       // Calculate the new quantity after the sale
-//     //   const newQuantity = product.quantity - formData.quantity;
-//     //   const inventoryUpdateResponse = await fetch(`${process.env.API_URL}api/inventory/${formData.productId}`, {
-//     //     method: 'PUT',
-//     //     headers: {
-//     //       'Content-Type': 'application/json'
-//     //     },
-//     //     body: JSON.stringify({
-//     //         quantity: newQuantity
-//     //       // Update the inventory based on the sale
-//     //       // For example, decrease the quantity, update unit price, etc.
-//     //     })
-//     //   });
-
-//     //   if (!inventoryUpdateResponse.ok) {
-//     //     throw new Error('Failed to update inventory');
-//     //   }
-
-//       closeModal();
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-  
 
 //   return (
-//     <div className="container mx-auto">
-//       <h1 className="text-3xl font-bold my-4">Sales</h1>
-//       <button onClick={openModal} className="bg-indigo-500 text-white rounded-md px-4 py-2 mb-4">Add Sale</button>
-//       <div className="grid grid-cols-1 gap-4">
-//         {Array.isArray(sales) && sales.map(sale => (
-//           <SalesCard key={sale._id} sale={sale} product={sale.productId}/>
+    
+//     // <div className="bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none">
+//     //   <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-5 ' >
+//     //   <div >
+//     //     <h1 className="  text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl text-neutral font-semibold mb-6">INVENTORY</h1>
+//     //     </div>
+     
+//     //   <button
+//     //     className="btn btn-lg mt-6 border-green-600 bg-green-500 shadow-2xl btn-secondary mr-4   "
+//     //     onClick={handleAddProduct}
+//     //   >
+//     //     <IoIosAddCircle size={24} className='text-black'/>
+
+//     //     <p className='text-black'> Add product</p>
+//     //   </button>
+     
+//     //   </div>
+//     //   <div className="grid grid-cols-1 md:grid-cols-4 rounded-lg bg-white bg-opacity-25 gap-6">
+        
+//     //     {
+//     //     products.map((product) => (
+//     //       <ProductCard key={product.id} product={product} onUpdate={updateProducts} />
+//     //     ))}
+//     //   </div>
+      
+//     //   <ProductModal
+//     //     isOpen={isModalOpen}
+//     //     onClose={handleCloseModal}
+//     //     onUpdate={updateProducts}
+//     //     updateProducts={updateProducts}
+//     //   />
+//     // </div>
+
+//     <div className="bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none ">
+//             <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-6'>
+//         <h1 className=" text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
+//             SALES</h1>
+//             <button onClick={openModal} className="btn btn-lg mt-6 border-green-600 bg-green-500 shadow-2xl btn-secondary mr-4 "> 
+//             <FaShoppingBasket />
+//             Add Sale</button>
+//             </div>
+//             <div className="grid grid-cols-1 gap-4">
+//                 {/* {sales.map(sale => (
+//                     <SalesCard key={sale._id} sale={sale} />
+//                 ))} */}
+//                  {Array.isArray(sales) && sales.map(sale => (
+//           <SalesCard key={sale._id} sale={sale} soldQuantity={formData.quantity}/>
 //         ))}
-//       </div>
-//       <SalesModal
-//         isOpen={isModalOpen}
-//         closeModal={closeModal}
-//         handleSubmit={handleSubmit}
-//         handleChange={handleChange}
-//         productOptions={productOptions}
-//         formData={formData}
-//       />
-//     </div>
+//             </div>
+//             <SalesModal
+//                 isOpen={isModalOpen}
+//                 closeModal={closeModal}
+//                 handleSubmit={handleSubmit}
+//                 handleChange={handleChange}
+//                 productOptions={productOptions}
+//                 formData={formData}
+//             />
+//         </div>
+
 //   );
 // };
 
-// export default Sales;
+// export default InventoryPage;
+
 
 
 import React, { useState, useEffect } from 'react';
@@ -323,10 +273,10 @@ if (Array.isArray(data.products)) {
     }
 
     return (
-        <div className="bg-gradient-to-r from-cyan-900 to-cyan-950 min-h-screen mx-auto px-4 py-8 select-none ">
-            <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-11'>
-        <h1 className=" flex align-middle gap-3 text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
-        <FaShoppingBasket /> SALES</h1>
+        <div className="bg-gradient-to-r from-cyan-500 to-cyan-700 min-h-screen mx-auto px-4 py-8 select-none ">
+            <div className='flex justify-between pt-2 bg-white bg-opacity-25 mb-3 rounded-xl mt-6'>
+        <h1 className=" text-bold shadow-2xl bg-cyan-50 bg-opacity-65 rounded-lg  pt-4 mt-4 ml-4 pb-5 pr-5 pl-5 text-3xl  text-neutral font-semibold mb-6">
+            SALES</h1>
             <button onClick={openModal} className="btn btn-lg mt-6 border-green-600 bg-green-500 shadow-2xl btn-secondary mr-4 "> 
             <FaShoppingBasket />
             Add Sale</button>
@@ -352,4 +302,3 @@ if (Array.isArray(data.products)) {
 };
 
 export default Sales;
-
